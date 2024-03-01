@@ -1,6 +1,6 @@
 import auth from "../auth/auth";
 
-export const serverLink = "https://fintechwallettest-harnh6jqr-hardikrock6514-gmailcom.vercel.app";
+export const serverLink = "https://fintechwallettest.vercel.app";
 // export const serverLink = "http://localhost:4000";
 
 export const userLogin =async ({email,password})=>{

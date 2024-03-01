@@ -2,8 +2,8 @@ import { useNavigate } from "react-router";
 import auth from "../auth/auth";
 
 import { createContext, useContext, useState, useEffect } from "react";
+import { serverLink } from "../api/userApi";
 
-const serverLink = 'http://localhost:4000'
 
 const UserAuthContext = createContext({});
 
