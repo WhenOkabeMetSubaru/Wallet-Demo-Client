@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import auth from '../../features/auth/auth'
 import { UserAuthFinal } from '../../features/providers/userAuthProvider'
+import { RiShutDownLine } from "react-icons/ri";
 
 import './navbar.css'
 import Search from 'antd/lib/input/Search'
@@ -89,6 +90,9 @@ const NavBar = ({ children }) =>
                 <div className='flex gap-x-2.5 px-4 rounded py-2 bg-[#e4e3e32a]'>
                     <FaWallet color="white" title='Wallet' onClick={ () => navigate('/') } className='cursor-pointer' size={ 25 } />
                     <p className='text-[0.8rem]'>₹{walletDetails?.amount}</p>
+                </div>
+                <div>
+                    <RiShutDownLine onClick={()=>auth.clearJWT(()=>navigate("/login"))} className='cursor-pointer' title="log out" size={25}/>
                 </div>
                 {/* <Link to={ "/cart" } className="text-white hover:text-white">
                     <div className='flex relative items-center cursor-pointer gap-[5px]'>
