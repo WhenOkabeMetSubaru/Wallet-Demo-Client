@@ -119,7 +119,7 @@ const Home = () =>
                         <div className='w-[20rem]'>
                             <div className='h-[10rem] w-[20rem] p-3 relative rounded-lg shadow bg-gradient-to-tr from-blue-700 to-blue-500 text-white'>
                                 <p className='text-[0.8rem]'>Balance</p>
-                                <p className='text-3xl mt-2'>₹ { walletDetails?.amount }</p>
+                                <p className='text-3xl mt-2'>₹ { walletDetails?.amount || 0.00}</p>
                                 <p className='absolute right-3 bottom-2 text-lg font-semibold'>VISA</p>
                             </div>
                             <div className='pt-2 flex gap-x-2'>
