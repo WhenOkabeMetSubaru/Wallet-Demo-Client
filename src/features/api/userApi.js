@@ -1,10 +1,13 @@
 import auth from "../auth/auth";
 
+export const serverLink = "https://fintechwallettest-harnh6jqr-hardikrock6514-gmailcom.vercel.app";
+// export const serverLink = "http://localhost:4000";
+
 export const userLogin =async ({email,password})=>{
    
     try {
         console.log("hello")
-        let response = await fetch("http://localhost:4000/api/v1/signin",{
+        let response = await fetch(`${serverLink}/api/v1/signin`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -24,7 +27,7 @@ export const userSignup = async (userDetails) =>
 {
     try
     {
-        let response = await fetch("http://localhost:4000/api/v1/signup", {
+        let response = await fetch(`${serverLink}/api/v1/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -45,7 +48,7 @@ export const getAllTransactionByUser = async ({token}) =>
 {
     try
     {
-        let response = await fetch("http://localhost:4000/api/v1/user/transactions/all", {
+        let response = await fetch(`${serverLink}/api/v1/user/transactions/all`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

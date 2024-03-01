@@ -8,7 +8,7 @@ import auth from '../../features/auth/auth';
 import { UserAuthFinal } from '../../features/providers/userAuthProvider';
 import { Modal, Input ,Table} from 'antd'
 import { Link } from 'react-router-dom';
-import { getAllTransactionByUser } from '../../features/api/userApi';
+import { getAllTransactionByUser, serverLink } from '../../features/api/userApi';
 
 const Home = () =>
 {
@@ -69,7 +69,7 @@ const Home = () =>
             name: currentUser?.name,
             description: "Tutorial of RazorPay",
             order_id: orderResponse?.data?.id,
-            callback_url: "http://localhost:4000/api/v1/user/payment/verification",
+            callback_url: `${serverLink}/api/v1/user/payment/verification`,
             prefill: {
                 name: currentUser?.name,
                 email: currentUser?.email,
@@ -82,7 +82,7 @@ const Home = () =>
                 "color": "#121212"
             }
         };
-        console.log(options)
+      
         const razor = new window.Razorpay(options);
         razor.on('payment.failed',(res)=>{
             console.log(res)

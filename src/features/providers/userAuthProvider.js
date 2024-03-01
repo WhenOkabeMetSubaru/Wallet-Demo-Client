@@ -3,7 +3,7 @@ import auth from "../auth/auth";
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const currentServer = 'http://localhost:4000'
+const serverLink = 'http://localhost:4000'
 
 const UserAuthContext = createContext({});
 
@@ -51,7 +51,7 @@ const UserProviderAuth = () =>
     useEffect(() =>
     {
        if(auth?.isAuthenticated()){
-           fetch(`${currentServer}/api/v1/user/single`, {
+           fetch(`${serverLink}/api/v1/user/single`, {
                method: 'GET',
                headers: {
                    'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const UserProviderAuth = () =>
                })
        }
 
-        // fetch(`${currentServer}/api/v1/user/cart/unique`, {
+        // fetch(`${serverLink}/api/v1/user/cart/unique`, {
         //     method: "GET",
         //     headers: {
         //         'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const UserProviderAuth = () =>
     const cartUpdate = () =>
     {
 
-        fetch(`${currentServer}/api/v1/user/cart/add`, {
+        fetch(`${serverLink}/api/v1/user/cart/add`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -250,7 +250,7 @@ const UserProviderAuth = () =>
     const refreshCart = () =>
     {
 
-        fetch(`${currentServer}/api/v1/user/cart/unique`, {
+        fetch(`${serverLink}/api/v1/user/cart/unique`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 import auth from "../auth/auth";
+import { serverLink } from "./userApi";
 
 export const getWalletByUserToken = async ({ token }) =>
 {
@@ -6,7 +7,7 @@ export const getWalletByUserToken = async ({ token }) =>
     try
     {
 
-        let response = await fetch("http://localhost:4000/api/v1/user/wallet/details", {
+        let response = await fetch(`${serverLink}/api/v1/user/wallet/details`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +30,7 @@ export const addMoneyToWallet = async ({ amount, token }) =>
     try
     {
 
-        let response = await fetch("http://localhost:4000/api/v1/user/wallet/addmoney", {
+        let response = await fetch(`${serverLink}/api/v1/user/wallet/addmoney`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -55,7 +56,7 @@ export const confirmAmount = async ({ amount, token }) =>
     try
     {
 
-        let response = await fetch("http://localhost:4000/api/v1/user/create/order", {
+        let response = await fetch(`${serverLink}/api/v1/user/create/order`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -80,7 +81,7 @@ export const paymentVerification = async ({ paymentDetails, token: token }) =>
     try
     {
 
-        let response = await fetch("http://localhost:4000/api/v1/user/payment/verification", {
+        let response = await fetch(`${serverLink}/api/v1/user/payment/verification`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -103,7 +104,7 @@ export const getKey = async ({ token }) =>
     try
     {
 
-        let response = await fetch("http://localhost:4000/api/v1/user/payment/key", {
+        let response = await fetch(`${serverLink}/api/v1/user/payment/key`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
