@@ -19,6 +19,7 @@ const Home = () =>
     const [pageSize,setPageSize] = useState(10);
     const [current,setCurrent] = useState(1);
     const [total,setTotal] = useState(100);
+    const [isLoader,setIsLoader] = useState(false);
 
     const [walletValue, setWalletValue] = useState()
     const { currentUser } = UserAuthFinal();
@@ -57,6 +58,7 @@ const Home = () =>
         //     setWalletValue(0)
         //     setOpenAddBox(false);
         // })
+        setIsLoader(true)
 
         const keyResponse = await getKey({token:auth?.isAuthenticated()})
 
@@ -88,13 +90,21 @@ const Home = () =>
             console.log(res)
         })
         razor.open();
+        setIsLoader(false);
     }
 
 
     const columns = [
         { title: 'S.No', dataIndex: 'key' },
-        {title:"Amount",dataIndex:'amount'},
-        {title:"Status",dataIndex:'transaction_status'},
+        {title:"Amount",render:(transaction)=>{
+            return <p>₹{transaction.amount}</p>
+        }},
+        {title:"Status",render:(transaction)=>{
+
+            return <div className={`w-24 flex justify-center font-semibold shadow items-center rounded py-1.5 ${transaction.transaction_status=="paid"?'bg-green-500 text-white':transaction.transaction_status=='pending'?'bg-orange-500 text-white':'bg-red-500 text-white'}`}>
+                <p>{transaction?.transaction_status=='paid'?"Success":transaction?.transaction_status}</p>
+            </div>
+        }},
         {title:"Created",dataIndex:'created'}
        
 
@@ -163,8 +173,8 @@ const Home = () =>
                     <Input prefix="₹" type={ "number" }
                         style={ { height: 50, fontSize: "large" } } value={ walletValue } onChange={ (e) => { setWalletValue(+e.target.value) } } />
 
-                    <button type="button" onClick={ ()=>{handleAddMoney()} } className='w-full h-10 rounded shadow bg-purple-900 text-white mt-10 flex justify-center items-center'>
-                        <p>Add</p>
+                    <button type="button" onClick={ ()=>{handleAddMoney()} } className='w-full h-10 text-white rounded shadow bg-purple-900  mt-10 flex justify-center items-center'>
+                        { isLoader == true ? <div className="loader"></div> : <p>Add</p> }
                     </button>
                 </div>
 
