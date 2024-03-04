@@ -4,7 +4,6 @@ import { Link, useSearchParams } from "react-router-dom"
 import NavBar from '../../components/NavBar'
 import Lottie from "lottie-react"
 import success from '../../features/successLottie.json'
-import './style.css'
 
 const PaymentSuccess = () =>
 {
