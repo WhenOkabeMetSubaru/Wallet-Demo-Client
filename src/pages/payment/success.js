@@ -4,6 +4,7 @@ import { Link, useSearchParams } from "react-router-dom"
 import NavBar from '../../components/NavBar'
 import Lottie from "lottie-react"
 import success from '../../features/successLottie.json'
+import './style.css'
 
 const PaymentSuccess = () =>
 {
@@ -20,6 +21,7 @@ const PaymentSuccess = () =>
                     <Link to="/" className="mt-2 underline hover:text-gray-400">Return to Home Screen</Link>
                 </div>
             </section>
+            
         </NavBar>
     )
 }
